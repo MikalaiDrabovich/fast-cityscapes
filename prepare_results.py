@@ -8,7 +8,13 @@ import time
 import cv2
 import numpy as np
 import weave
- 
+
+#if necessary, use custom caffe build
+#sys.path.insert(0, 'build/install/python')
+sys.path.insert(0, '/home/ndr/Downloads/caffe/install_new/python/')
+import caffe
+
+
 def id2bgr(im):
  
     w, h = im.shape
