@@ -104,7 +104,13 @@ def feed_and_run(input_frame):
 
 
 if __name__ == "__main__":
- 
+
+    # input_dir, results_dir should be the same as in set_env.sh
+    input_dir   =  os.environ['CITYSCAPES_DATASET_IN']
+    #input_dir = '/home/ndr/work/Datasets/cityscapes/images/leftImg8bit/val'
+
+    results_dir =  os.environ['CITYSCAPES_RESULTS']
+    #results_dir = '/home/ndr/work/Datasets/cityscapes/results/val'
 
     input_images = []
     for dataset_dir, dirs, files in os.walk(input_dir):
@@ -202,7 +208,12 @@ if __name__ == "__main__":
 
         num_images_processed += 1
 
-      
+        print("Total time with data i/o and image pre/post postprocessing - {} ms.".format(
+            round((time.time() - initial_time) * 1000)))
+        print("---------> Finished processing image #{}, {}, net.forward() time: {} ms.".format(num_images_processed,
+                                                                                         os.path.basename(image),
+                                                                                         core_forward_time))
+ 
 
     if show_gui:
         cv2.destroyWindow("Classification results")
