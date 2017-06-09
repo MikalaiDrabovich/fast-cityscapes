@@ -176,7 +176,8 @@ if __name__ == "__main__":
         #result_out_upscaled = cv2.resize(recognition_result, (input_w, input_h), interpolation=cv2.INTER_NEAREST)
         result_out_upscaled = recognition_result
 
-        
+        print("Resize time: {} ms.".format(round((time.time() - start) * 1000)))
+
         start = time.time()
         cv2.addWeighted(result_out_upscaled, alpha, frame, 1.0 - alpha, 0.0, blended_result)
         print("Overlay detection results: {} ms.".format(round((time.time() - start) * 1000)))
