@@ -9,6 +9,7 @@ work_dir=$PWD
     git clone https://github.com/mcordts/cityscapesScripts.git
     cd cityscapesScripts
     git checkout 945c110
+    python setup.py build_ext --inplace
   fi
 
   python prepare_results.py

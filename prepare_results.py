@@ -169,7 +169,8 @@ if __name__ == "__main__":
         start = time.time()
         frame = cv2.imread(image)
 
-        
+        print("Input image file reading time: {} ms.".format(round((time.time() - start) * 1000)))
+
         core_forward_time, recognition_result, greyscale_recognition_result = feed_and_run(frame)
 
         start = time.time()
@@ -214,7 +215,8 @@ if __name__ == "__main__":
         print("---------> Finished processing image #{}, {}, net.forward() time: {} ms.".format(num_images_processed,
                                                                                          os.path.basename(image),
                                                                                          core_forward_time))
- 
+    if createVideoFromResults:
+        writer.release()
 
     if show_gui:
         cv2.destroyWindow("Classification results")
