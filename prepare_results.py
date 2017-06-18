@@ -121,7 +121,22 @@ if __name__ == "__main__":
     #------------------------ Change main parameters here ---------------
 
     model_weights = './models/weights.caffemodel'
- 
+
+    # original model
+    # model_description = './models/deploy_model_with_upsampling_without_argmax.prototxt'
+    # model_has_argmax = False
+
+    # improved 1
+    model_description = './models/deploy_model_with_upsampling_with_argmax.prototxt'
+    model_has_argmax = True
+
+    # improved 2
+    # model_description = './models/deploy_model_without_upsampling_without_argmax.prototxt'
+    # model_has_argmax = False
+
+    # improved 3
+    # model_description = './models/deploy_model_without_upsampling_with_argmax.prototxt'
+    # model_has_argmax = True
 
     show_gui = True
     save_image_result = True
