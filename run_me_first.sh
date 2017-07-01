@@ -13,5 +13,7 @@ work_dir=$PWD
   fi
 
   python prepare_results.py
-
+    
+  cd $work_dir/cityscapesScripts/cityscapesscripts/evaluation
+  python evalPixelLevelSemanticLabeling.py
 

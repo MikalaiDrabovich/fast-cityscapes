@@ -91,7 +91,14 @@ def feed_and_run(input_frame):
 
     start = time.time()
 
-  
+    if model_has_argmax:
+        result_with_train_ids = net.blobs['recognized_object_ids'].data[0].astype(np.uint8)
+        result_with_train_ids = np.squeeze(result_with_train_ids, axis=0)
+    else:
+        result_with_train_ids = net.blobs['score'].data[0].argmax(axis=0).astype(np.uint8)
+
+    print("ArgMax took {} ms.".format(round((time.time() - start) * 1000)))
+
     start = time.time()
     greyscale_segmentation_result = trainID2labelID(result_with_train_ids)
     print("Conversion from train ID to label ID took {} ms.".format(round((time.time() - start) * 1000)))
