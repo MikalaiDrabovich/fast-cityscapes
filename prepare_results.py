@@ -16,7 +16,13 @@ import caffe
 
 
 def id2bgr(im):
- 
+    """
+    A fast conversion from object id to color.
+    :param im: 2d array with shape (w,h) with recognized object IDs as pixel values
+    :return: color_image: BGR image with colors corresponding to detected object.
+    These BGR values are for CityScapes dataset:
+    github.com/mcordts/cityscapesScripts/blob/master/cityscapesscripts/helpers/labels.py
+    """
     w, h = im.shape
     color_image = np.empty((w, h, 3), dtype=np.uint8)
      
