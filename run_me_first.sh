@@ -20,6 +20,7 @@ if [ -d "$work_dir/leftImg8bit_trainvaltest/leftImg8bit/val/" ]; then
 else
   echo 'You need to download leftImg8bit_trainvaltest.zip (11GB) from https://www.cityscapes-dataset.com/downloads and unpack it to current directory' $work_dir
   echo 'Then you need to download gtFine_trainvaltest.zip (241MB) and unpack it to '$work_dir'/leftImg8bit_trainvaltest/leftImg8bit/'
+  echo 'Finally, copy your trained models into ./models/ or download and unpack them from https://github.com/MikalaiDrabovich/fast-pixel-classification-dnn-caffe/archive/v0.1.zip'
 fi
 
 

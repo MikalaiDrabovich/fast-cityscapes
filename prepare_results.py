@@ -1,5 +1,10 @@
 # coding=utf-8
- 
+"""
+Fast object recognition with a pretrained deep neural net on CityScapes dataset.
+See __main__ for the settings.
+
+Author: nick.drabovich@amd.com
+"""
 from __future__ import print_function
 import os
 import sys
@@ -25,7 +30,40 @@ def id2bgr(im):
     """
     w, h = im.shape
     color_image = np.empty((w, h, 3), dtype=np.uint8)
-     
+    code = """
+    unsigned char cityscape_object_colors[19][3] = {
+    {128, 64,128}, // road
+    {232, 244, 35}, // sidewalk
+    { 70, 70, 70}, // building
+    {156, 102,102}, // wall
+    {190,153,153}, // fence
+    {153,153,153}, // pole
+    {30,170, 250}, // traffic light
+    {0, 220,  220}, // traffic sign
+    {35,142, 107}, // vegetation
+    {152,251,152}, // terrain
+    { 180, 130,70}, // sky
+    {60, 20, 220}, // person
+    {0,  0,  255}, // rider
+    { 142,  0,0}, // car
+    { 70,  0, 0}, // truck
+    {  100, 60,0}, // bus
+    {  100, 80,0}, // train
+    {  230,  0,0}, // motorcycle
+    {32, 11, 119}  // bicycle
+    };
+
+    int impos=0;
+    int retpos=0;
+    for(int j=0; j<Nim[0]; j++) {
+        for (int i=0; i<Nim[1]; i++) {
+            unsigned char d=im[impos++];
+            color_image[retpos++] = cityscape_object_colors[d][0];
+            color_image[retpos++] = cityscape_object_colors[d][1];
+            color_image[retpos++] = cityscape_object_colors[d][2];
+        }
+    }
+    """
     weave.inline(code, ["im", "color_image"])
     return color_image
 
