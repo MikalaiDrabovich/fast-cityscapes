@@ -191,7 +191,7 @@ if __name__ == "__main__":
 
     show_gui = True
     save_image_result = True
-    createVideoFromResults = True
+    createVideoFromResults = False
 
     input_w = 2048
     input_h = 1024
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     if createVideoFromResults:
         fps = 30
         codec = 'mp4v'
-        videoFileName = 'result_val.mkv'
+        videoFileName = 'classification_results.mkv'
         fourcc = cv2.VideoWriter_fourcc(*codec)
         writer = cv2.VideoWriter(videoFileName, fourcc, fps, (input_w, input_h))
 
